@@ -33,7 +33,11 @@ from app.modules.username_lookup import lookup_username
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 
-app = FastAPI(title="Phantom OSINT & Cybersecurity Intelligence Platform", version="1.0.0")
+app = FastAPI(
+    title="Phantom OSINT & Cybersecurity Intelligence Platform",
+    version="1.0.0"
+)
+
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 _rate_buckets: dict[str, deque[float]] = defaultdict(deque)
 _rate_lock = asyncio.Lock()
