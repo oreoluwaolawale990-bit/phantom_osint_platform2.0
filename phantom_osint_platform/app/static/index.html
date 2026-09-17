@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070c">
+  <title>Phantom OSINT // Made by Phantom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark">P</div>
+      <div>
+        <div class="brand">PHANTOM OSINT</div>
+        <div class="brand-sub">INTELLIGENCE // DEFENSIVE CYBER</div>
+      </div>
+    </div>
+    <div class="top-status"><span class="pulse-dot"></span><span>ONLINE</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero glass">
+      <div>
+        <p class="eyebrow">PRIVATE LAB // PUBLIC DATA ONLY</p>
+        <h1>OSINT & Cybersecurity<br><span>Intelligence Platform</span></h1>
+        <p class="hero-copy">Fast, bounded reconnaissance for domains, IPs, public profiles, email exposure and defensive web auditing.</p>
+      </div>
+      <div class="hero-badge">Made by Phantom</div>
+    </section>
+
+    <nav class="tabs glass" id="tabs" aria-label="Tools">
+      <button class="tab active" data-tab="ip"><i data-lucide="network"></i>IP</button>
+      <button class="tab" data-tab="domain"><i data-lucide="globe-2"></i>DOMAIN</button>
+      <button class="tab" data-tab="username"><i data-lucide="at-sign"></i>USERNAME</button>
+      <button class="tab" data-tab="email"><i data-lucide="mail"></i>EMAIL</button>
+      <button class="tab" data-tab="url"><i data-lucide="shield-check"></i>URL AUDIT</button>
+      <button class="tab" data-tab="cyber"><i data-lucide="cpu"></i>CYBER UTIL</button>
+    </nav>
+
+    <section class="tool-panel glass" id="panel-ip">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 01</p><h2>Network & IP Intelligence</h2></div><span class="chip">keyless</span></div>
+      <form class="lookup-form" id="ip-form"><input id="ip-input" placeholder="8.8.8.8" autocomplete="off"><button>Run Lookup <i data-lucide="arrow-up-right"></i></button></form>
+    </section>
+
+    <section class="tool-panel glass hidden" id="panel-domain">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 02</p><h2>Domain / DNS / SSL Recon</h2></div><span class="chip">CT + WHOIS</span></div>
+      <form class="lookup-form" id="domain-form"><input id="domain-input" placeholder="example.com" autocomplete="off"><button>Inspect Domain <i data-lucide="search"></i></button></form>
+    </section>
+
+    <section class="tool-panel glass hidden" id="panel-username">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 03</p><h2>Username Footprint Hunter</h2></div><span class="chip">30+ platforms</span></div>
+      <form class="lookup-form" id="username-form"><input id="username-input" placeholder="phantom_0x404" autocomplete="off"><button>Hunt Footprint <i data-lucide="radar"></i></button></form>
+    </section>
+
+    <section class="tool-panel glass hidden" id="panel-email">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 04</p><h2>Email / Exposure Recon</h2></div><span class="chip">public breach data</span></div>
+      <form class="lookup-form" id="email-form"><input id="email-input" type="email" placeholder="you@example.com" autocomplete="off"><button>Check Exposure <i data-lucide="fingerprint"></i></button></form>
+    </section>
+
+    <section class="tool-panel glass hidden" id="panel-url">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 05</p><h2>Web Target Security Auditor</h2></div><span class="chip">SSRF guarded</span></div>
+      <form class="lookup-form" id="url-form"><input id="url-input" placeholder="https://example.com" autocomplete="off"><button>Audit Target <i data-lucide="scan-search"></i></button></form>
+    </section>
+
+    <section class="tool-panel glass hidden" id="panel-cyber">
+      <div class="panel-head"><div><p class="eyebrow">MODULE 06</p><h2>Cyber Security Utilities</h2></div><span class="chip">local-first</span></div>
+      <div class="utility-grid">
+        <article class="utility-card"><h3>Hash Generator / Identifier</h3><textarea id="hash-value" placeholder="Paste text or a hash here..."></textarea><div class="row"><select id="hash-alg"><option value="sha256">SHA-256</option><option value="md5">MD5</option><option value="sha1">SHA-1</option><option value="sha512">SHA-512</option><option value="sha3_256">SHA3-256</option><option value="sha3_512">SHA3-512</option><option value="blake2b">BLAKE2b</option><option value="blake2s">BLAKE2s</option></select><button class="small" id="hash-btn">Analyze</button></div><pre class="mini-output" id="hash-output">Ready.</pre></article>
+        <article class="utility-card"><h3>Google Dork Generator</h3><input id="dork-target" placeholder="example.com"><select id="dork-kind"><option value="exposure">Exposure</option><option value="documents">Documents</option><option value="admin">Admin/login pages</option><option value="backup">Backup artifacts</option></select><div class="row"><input id="dork-keyword" placeholder="keyword (optional)"><input id="dork-ext" placeholder="ext (optional)"></div><button class="small wide" id="dork-btn">Generate Queries</button><pre class="mini-output" id="dork-output">Ready.</pre></article>
+        <article class="utility-card"><h3>Subnet / CIDR Calculator</h3><div class="row"><input id="cidr-input" placeholder="192.168.1.0/24"><button class="small" id="cidr-btn">Calculate</button></div><pre class="mini-output" id="cidr-output">Ready.</pre></article>
+        <article class="utility-card"><h3>Password Entropy Evaluator</h3><input id="entropy-input" type="password" placeholder="Type locally; not stored"><button class="small wide" id="entropy-btn">Evaluate</button><pre class="mini-output" id="entropy-output">Ready.</pre></article>
+        <article class="utility-card"><h3>Benign Webhook Test Payload</h3><input id="hook-url" placeholder="https://your-endpoint.example"><input id="hook-event" placeholder="test"><button class="small wide" id="hook-btn">Build Payload</button><pre class="mini-output" id="hook-output">No request is sent.</pre></article>
+      </div>
+    </section>
+
+    <section class="results glass">
+      <div class="panel-head"><div><p class="eyebrow">LIVE OUTPUT</p><h2>Intelligence Console</h2></div><button class="icon-btn" id="clear-btn" title="Clear output"><i data-lucide="trash-2"></i></button></div>
+      <div class="result-status" id="result-status">READY // Awaiting operation</div>
+      <div id="result-view" class="result-view"><pre>{ "status": "ready", "message": "Select a module and run a lookup." }</pre></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div>Made by Phantom</div><div>Authorized use only // public data // defensive research</div></footer>
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
